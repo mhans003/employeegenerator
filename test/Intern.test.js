@@ -15,4 +15,12 @@ describe("Intern", () => {
     }); 
 
     //Describe each method. 
+    describe("getName", () => {
+        it("should return the intern's name property", () => {
+            const internObj = new Intern("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const name = internObj.getName(); 
+
+            expect(name).toEqual("Michael"); 
+        }); 
+    }); 
 }); 

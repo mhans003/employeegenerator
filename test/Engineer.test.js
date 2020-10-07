@@ -15,4 +15,12 @@ describe("Engineer", () => {
     }); 
 
     //Describe each method. 
+    describe("getName", () => {
+        it("should return the engineer's name property", () => {
+            const engineerObj = new Engineer("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const name = engineerObj.getName(); 
+
+            expect(name).toEqual("Michael"); 
+        }); 
+    }); 
 }); 

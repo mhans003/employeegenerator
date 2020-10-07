@@ -15,4 +15,12 @@ describe("Manager", () => {
     }); 
 
     //Describe each method. 
+    describe("getName", () => {
+        it("should return the manager's name property", () => {
+            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const name = managerObj.getName(); 
+
+            expect(name).toEqual("Michael"); 
+        }); 
+    }); 
 }); 

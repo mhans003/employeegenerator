@@ -10,11 +10,15 @@ describe("Employee", () => {
             expect(employeeObj.id).toEqual(34); 
             expect(employeeObj.email).toEqual("michaeledwardhanson@gmail.com"); 
         }); 
-
-        //it("should create an object with the methods getname(), getId(), getEmail(), and getRole()", () => {
-
-        //}); 
     }); 
 
     //Describe each method. 
+    describe("getName", () => {
+        it("should return the employee's name property", () => {
+            const employeeObj = new Employee("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const name = employeeObj.getName(); 
+
+            expect(name).toEqual("Michael"); 
+        }); 
+    }); 
 }); 
