@@ -4,11 +4,12 @@ describe("Manager", () => {
     //Describe object instantiation with existence of properties and methods.
     describe("Initialization", () => {
         it("should create an object with a name, id, and email property", () => {
-            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com", 20); 
 
             expect(managerObj.name).toEqual("Michael"); 
             expect(managerObj.id).toEqual(34); 
             expect(managerObj.email).toEqual("michaeledwardhanson@gmail.com"); 
+            expect(managerObj.officeNumber).toEqual(20); 
         }); 
 
         
