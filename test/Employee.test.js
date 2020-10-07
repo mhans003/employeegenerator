@@ -21,4 +21,13 @@ describe("Employee", () => {
             expect(name).toEqual("Michael"); 
         }); 
     }); 
+
+    describe("getId", () => {
+        it("should return the employee's id property", () => {
+            const employeeObj = new Employee("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const id = employeeObj.getId(); 
+
+            expect(id).toEqual(34); 
+        }); 
+    }); 
 }); 
