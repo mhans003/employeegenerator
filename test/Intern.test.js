@@ -4,11 +4,12 @@ describe("Intern", () => {
     //Describe object instantiation with existence of properties and methods.
     describe("Initialization", () => {
         it("should create an object with a name, id, and email property", () => {
-            const internObj = new Intern("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const internObj = new Intern("Michael", 34, "michaeledwardhanson@gmail.com", "UCR"); 
 
             expect(internObj.name).toEqual("Michael"); 
             expect(internObj.id).toEqual(34); 
             expect(internObj.email).toEqual("michaeledwardhanson@gmail.com"); 
+            expect(internObj.school).toEqual("UCR"); 
         }); 
 
         
@@ -50,4 +51,13 @@ describe("Intern", () => {
             expect(role).toEqual("Intern"); 
         }); 
     }); 
+
+    describe("getSchool", () => {
+        it("should return the intern's school name", () => {
+            const internObj = new Intern("Michael", 34, "michaeledwardhanson@gmail.com", "UCR"); 
+            const school = internObj.getSchool(); 
+
+            expect(school).toEqual("UCR"); 
+        }); 
+    });
 }); 
