@@ -4,11 +4,12 @@ describe("Engineer", () => {
     //Describe object instantiation with existence of properties and methods.
     describe("Initialization", () => {
         it("should create an object with a name, id, and email property", () => {
-            const engineerObj = new Engineer("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const engineerObj = new Engineer("Michael", 34, "michaeledwardhanson@gmail.com", "mhans003"); 
 
             expect(engineerObj.name).toEqual("Michael"); 
             expect(engineerObj.id).toEqual(34); 
             expect(engineerObj.email).toEqual("michaeledwardhanson@gmail.com"); 
+            expect(engineerObj.github).toEqual("mhans003"); 
         }); 
 
         
@@ -48,6 +49,15 @@ describe("Engineer", () => {
             const role = engineerObj.getRole(); 
 
             expect(role).toEqual("Engineer"); 
+        }); 
+    }); 
+
+    describe("getGithub", () => {
+        it("should return the engineer's github username", () => {
+            const engineerObj = new Engineer("Michael", 34, "michaeledwardhanson@gmail.com", "mhans003"); 
+            const github = engineerObj.getGithub(); 
+
+            expect(github).toEqual("mhans003"); 
         }); 
     }); 
 }); 
