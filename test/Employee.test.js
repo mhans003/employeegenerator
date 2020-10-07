@@ -30,4 +30,13 @@ describe("Employee", () => {
             expect(id).toEqual(34); 
         }); 
     }); 
+
+    describe("getEmail", () => {
+        it("should return the employee's email property", () => {
+            const employeeObj = new Employee("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const email = employeeObj.getEmail(); 
+
+            expect(email).toEqual("michaeledwardhanson@gmail.com"); 
+        }); 
+    }); 
 }); 
