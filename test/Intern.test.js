@@ -41,4 +41,13 @@ describe("Intern", () => {
             expect(email).toEqual("michaeledwardhanson@gmail.com"); 
         }); 
     }); 
+
+    describe("getRole", () => {
+        it("should return the intern's role", () => {
+            const internObj = new Intern("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const role = internObj.getRole(); 
+
+            expect(role).toEqual("Intern"); 
+        }); 
+    }); 
 }); 
