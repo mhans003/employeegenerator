@@ -36,7 +36,8 @@ function inputNewEmployee() {
         {
             type: "input",
             message: "What is the employee's email?",
-            name: "email"
+            name: "email",
+            validate: validateEmail
         }
     ])
     .then(answers => {
@@ -148,8 +149,19 @@ function askForNewEmployee(newEmployee) {
 }
 
 function validateNumber(input) {
+    //Validate number input. 
     if(isNaN(input)) {
         return "Enter a valid number.";
     }
+    return true; 
+}
+
+function validateEmail(input) {
+    //Validate email using a Regex (source for this Regex: https://www.w3resource.com/javascript/form/email-validation.php). 
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; 
+    if (!input.match(emailRegex)) {
+        return "Enter a valid email address."; 
+    } 
+
     return true; 
 }
