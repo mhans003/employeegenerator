@@ -7,6 +7,10 @@ const Engineer = require("./lib/Engineer");
 const Employee = require("./lib/Employee");
 const Intern = require("./lib/Intern"); 
 
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
+
+//Call the function that renders the HTML once the employee objects are filled into an array. 
 const render = require("./lib/htmlRenderer");
 
 let employees = [];
@@ -45,11 +49,10 @@ function inputNewEmployee() {
             validate: validateEmail
         }
     ])
-    .then(answers => {
-        
+    .then(answers => { 
         const { employeeType, name, id, email } = answers; 
-        //let employeeObj; 
 
+        //See which employee type was selected. Construct object appropriately based on employee type.
         switch(employeeType[0]) {
             case "Manager": 
                 inputManager(name, id, email); 
@@ -67,9 +70,7 @@ function inputNewEmployee() {
 }
 
 function inputManager(name, id, email) {
-
-    console.log("manager called"); 
-    
+    //Construct a manager object, and receive the office number. 
     inquirer.prompt([
         {
             type: "number",
@@ -85,9 +86,7 @@ function inputManager(name, id, email) {
 }
 
 function inputEngineer(name, id, email) {
-
-    console.log("engineer called"); 
-    
+    //Construct an engineer object, and receive the GitHub username property. 
     inquirer.prompt([
         {
             type: "input",
@@ -102,9 +101,7 @@ function inputEngineer(name, id, email) {
 }
 
 function inputIntern(name, id, email) {
-
-    console.log("intern called"); 
-    
+    //Construct an intern object, and receive the school name. 
     inquirer.prompt([
         {
             type: "input",
@@ -119,14 +116,16 @@ function inputIntern(name, id, email) {
 }
 
 function inputEmployee(name, id, email) {
-    console.log("employee called"); 
+    //By default, construct an ordinary employee if it is not one of the unique classes of employee.
     askForNewEmployee(new Employee(name, id, email)); 
 }
 
 function askForNewEmployee(newEmployee) {
-
+    //See if the user wants to enter another employee.
+    //First, put the newly created employee into the array. 
     employees.push(newEmployee); 
 
+    //Ask the user for the next employee. 
     inquirer.prompt([
         {
             type: "checkbox",
@@ -143,13 +142,16 @@ function askForNewEmployee(newEmployee) {
         console.log("User Selected NewEmployee?",newEmployee[0]); 
 
         if(newEmployee[0] === "Yes") {
+            //Receive the next employee until the user is finished. 
             inputNewEmployee(); 
         } else {
-            //For now, output every entered user: 
+            //Output every entered user in the console for reference: 
             employees.forEach((employee) => {
-                //console.log(employee); 
                 printEmployee(employee); 
             });
+
+            //Render the employee data into the HTML template, and write it to an HTML file to be stored in the output folder. 
+            fs.writeFileSync(outputPath, render(employees)); 
         }
     });
 }
@@ -173,6 +175,7 @@ function validateEmail(input) {
 }
 
 function printEmployee(employeeObj) {
+    //Print out the employee data into the console for reference. 
     console.log(`${employeeObj.getRole()}: ${employeeObj.getName()} (ID: ${employeeObj.getId()})`); 
     console.log(`--> Email: ${employeeObj.getEmail()}`); 
     if(employeeObj.getRole() === "Manager") {
@@ -182,5 +185,5 @@ function printEmployee(employeeObj) {
     } else if(employeeObj.getRole() === "Engineer") {
         console.log(`--> GitHub Account: ${employeeObj.getGithub()}`); 
     }
-    console.log("--------"); 
+    console.log("--------");  
 }
