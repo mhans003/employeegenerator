@@ -4,6 +4,8 @@ const Engineer = require("./lib/Engineer");
 const Employee = require("./lib/Employee");
 const Intern = require("./lib/Intern"); 
 
+let employees = [];
+
 //Get the responses from the user. 
 inputNewEmployee(); 
 
@@ -54,7 +56,6 @@ function inputNewEmployee() {
             case "Employee": 
                 inputEmployee(name, id, email); 
         }
-
     }); 
 }
 
@@ -71,7 +72,7 @@ function inputManager(name, id, email) {
     ])
     .then(answers => {
         const { officeNumber } = answers; 
-        console.log(new Manager(name, id, email, officeNumber)); 
+        askForNewEmployee(new Manager(name, id, email, officeNumber)); 
     }); 
 }
 
@@ -88,8 +89,7 @@ function inputEngineer(name, id, email) {
     ])
     .then(answers => {
         const { github } = answers;
-        const engineer = new Engineer(name, id, email, github); 
-        console.log(engineer.getRole()); 
+        askForNewEmployee(new Engineer(name, id, email, github)); 
     });  
 }
 
@@ -106,11 +106,41 @@ function inputIntern(name, id, email) {
     ])
     .then(answers => {
         const { school } = answers;
-        console.log(new Intern(name, id, email, school)); 
+        askForNewEmployee(new Intern(name, id, email, school)); 
     });  
 }
 
 function inputEmployee(name, id, email) {
     console.log("employee called"); 
-    console.log(new Employee(name, id, email)); 
+    askForNewEmployee(new Employee(name, id, email)); 
+}
+
+function askForNewEmployee(newEmployee) {
+
+    employees.push(newEmployee); 
+
+    inquirer.prompt([
+        {
+            type: "checkbox",
+            message: "Do you have another employee to enter?",
+            choices: [
+                "Yes",
+                "No"
+            ],
+            name: "newEmployee"
+        }
+    ])
+    .then(answer => {
+        const { newEmployee } = answer; 
+        console.log("User Selected NewEmployee?",newEmployee[0]); 
+
+        if(newEmployee[0] === "Yes") {
+            inputNewEmployee(); 
+        } else {
+            //For now, output every entered user: 
+            employees.forEach((employee) => {
+                console.log(employee); 
+            });
+        }
+    });
 }
