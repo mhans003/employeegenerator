@@ -1,8 +1,13 @@
 const inquirer = require("inquirer"); 
+const path = require("path"); 
+const fs = require("fs"); 
+
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Employee = require("./lib/Employee");
 const Intern = require("./lib/Intern"); 
+
+const render = require("./lib/htmlRenderer");
 
 let employees = [];
 
@@ -169,13 +174,13 @@ function validateEmail(input) {
 
 function printEmployee(employeeObj) {
     console.log(`${employeeObj.getRole()}: ${employeeObj.getName()} (ID: ${employeeObj.getId()})`); 
-    console.log(`-->Email: ${employeeObj.getEmail()}`); 
+    console.log(`--> Email: ${employeeObj.getEmail()}`); 
     if(employeeObj.getRole() === "Manager") {
-        console.log(`-->Office Number: ${employeeObj.getOfficeNumber()}`); 
+        console.log(`--> Office Number: ${employeeObj.getOfficeNumber()}`); 
     } else if(employeeObj.getRole() === "Intern") {
-        console.log(`-->School: ${employeeObj.getSchool()}`); 
+        console.log(`--> School: ${employeeObj.getSchool()}`); 
     } else if(employeeObj.getRole() === "Engineer") {
-        console.log(`-->GitHub Account: ${employeeObj.getGithub()}`); 
+        console.log(`--> GitHub Account: ${employeeObj.getGithub()}`); 
     }
-    console.log(`--------`); 
+    console.log("--------"); 
 }
