@@ -28,9 +28,10 @@ function inputNewEmployee() {
             name: "name"
         },
         {
-            type: "input",
+            type: "number",
             message: "What is the employee's ID number?",
-            name: "id"
+            name: "id",
+            validate: validateNumber
         },
         {
             type: "input",
@@ -65,9 +66,10 @@ function inputManager(name, id, email) {
     
     inquirer.prompt([
         {
-            type: "input",
+            type: "number",
             message: "What is this manager's office number?",
-            name: "officeNumber"
+            name: "officeNumber",
+            validate: validateNumber
         }
     ])
     .then(answers => {
@@ -143,4 +145,11 @@ function askForNewEmployee(newEmployee) {
             });
         }
     });
+}
+
+function validateNumber(input) {
+    if(isNaN(input)) {
+        return "Enter a valid number.";
+    }
+    return true; 
 }
