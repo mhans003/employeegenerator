@@ -18,7 +18,7 @@ describe("Manager", () => {
     //Describe each method. 
     describe("getName", () => {
         it("should return the manager's name property", () => {
-            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com", 20); 
             const name = managerObj.getName(); 
 
             expect(name).toEqual("Michael"); 
@@ -27,7 +27,7 @@ describe("Manager", () => {
 
     describe("getId", () => {
         it("should return the manager's id property", () => {
-            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com", 20); 
             const id = managerObj.getId(); 
 
             expect(id).toEqual(34); 
@@ -36,7 +36,7 @@ describe("Manager", () => {
 
     describe("getEmail", () => {
         it("should return the manager's email property", () => {
-            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com", 20); 
             const email = managerObj.getEmail(); 
 
             expect(email).toEqual("michaeledwardhanson@gmail.com"); 
@@ -45,10 +45,19 @@ describe("Manager", () => {
 
     describe("getRole", () => {
         it("should return the manager's role", () => {
-            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com"); 
+            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com", 20); 
             const role = managerObj.getRole(); 
 
             expect(role).toEqual("Manager"); 
+        }); 
+    }); 
+
+    describe("getOfficeNumber", () => {
+        it("should return the manager's office number", () => {
+            const managerObj = new Manager("Michael", 34, "michaeledwardhanson@gmail.com", 20); 
+            const officeNumber = managerObj.getOfficeNumber(); 
+
+            expect(officeNumber).toEqual(20); 
         }); 
     }); 
 }); 

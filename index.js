@@ -142,7 +142,8 @@ function askForNewEmployee(newEmployee) {
         } else {
             //For now, output every entered user: 
             employees.forEach((employee) => {
-                console.log(employee); 
+                //console.log(employee); 
+                printEmployee(employee); 
             });
         }
     });
@@ -164,4 +165,17 @@ function validateEmail(input) {
     } 
 
     return true; 
+}
+
+function printEmployee(employeeObj) {
+    console.log(`${employeeObj.getRole()}: ${employeeObj.getName()} (ID: ${employeeObj.getId()})`); 
+    console.log(`-->Email: ${employeeObj.getEmail()}`); 
+    if(employeeObj.getRole() === "Manager") {
+        console.log(`-->Office Number: ${employeeObj.getOfficeNumber()}`); 
+    } else if(employeeObj.getRole() === "Intern") {
+        console.log(`-->School: ${employeeObj.getSchool()}`); 
+    } else if(employeeObj.getRole() === "Engineer") {
+        console.log(`-->GitHub Account: ${employeeObj.getGithub()}`); 
+    }
+    console.log(`--------`); 
 }
