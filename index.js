@@ -88,7 +88,8 @@ function inputEngineer(name, id, email) {
     ])
     .then(answers => {
         const { github } = answers;
-        console.log(new Engineer(name, id, email, github)); 
+        const engineer = new Engineer(name, id, email, github); 
+        console.log(engineer.getRole()); 
     });  
 }
 
