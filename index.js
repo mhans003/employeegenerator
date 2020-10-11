@@ -199,6 +199,8 @@ function getCompanyName() {
             printEmployee(employee); 
         });
 
+        console.log("This employee information is being used to generate the HTML page. See team.html in the output folder."); 
+
         //Render the employee data into the HTML template, and write it to an HTML file to be stored in the output folder. 
         fs.writeFileSync(outputPath, render(employees, companyName)); 
     }); 
