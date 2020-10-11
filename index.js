@@ -145,13 +145,8 @@ function askForNewEmployee(newEmployee) {
             //Receive the next employee until the user is finished. 
             inputNewEmployee(); 
         } else {
-            //Output every entered user in the console for reference: 
-            employees.forEach((employee) => {
-                printEmployee(employee); 
-            });
-
-            //Render the employee data into the HTML template, and write it to an HTML file to be stored in the output folder. 
-            fs.writeFileSync(outputPath, render(employees)); 
+            //Ask user for the company/team name.
+            getCompanyName(); 
         }
     });
 }
@@ -186,4 +181,25 @@ function printEmployee(employeeObj) {
         console.log(`--> GitHub Account: ${employeeObj.getGithub()}`); 
     }
     console.log("--------");  
+}
+
+function getCompanyName() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is your company or team name?",
+            name: "companyName"
+        }
+    ])
+    .then(answers => {
+        const { companyName } = answers; 
+
+        //Output every entered user in the console for reference: 
+        employees.forEach((employee) => {
+            printEmployee(employee); 
+        });
+
+        //Render the employee data into the HTML template, and write it to an HTML file to be stored in the output folder. 
+        fs.writeFileSync(outputPath, render(employees, companyName)); 
+    }); 
 }
