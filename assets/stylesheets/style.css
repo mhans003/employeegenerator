@@ -1,0 +1,24 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color: rgba(100,100,255,1.0); 
+}
+
+.jumbotron {
+    background-color: rgba(235,235,220,0.7); 
+}
+
+.card-header {
+    text-align: center;
+    background-color: rgba(220,220,235,0.7); 
+}
+
+.card-header h2 {
+    font-weight: 600;
+}
+
+.card-body {
+    background-color: rgba(235,235,220,0.2);
+}
