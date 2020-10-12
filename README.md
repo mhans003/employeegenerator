@@ -5,7 +5,6 @@
 ![Screenshot of Employee Generator](./assets/images/screenshot2.jpg)
 ![Screenshot of Employee Generator](./assets/images/screenshot3.jpg)
 ![Screenshot of Employee Generator](./assets/images/screenshot4.jpg)
-![Screenshot of Employee Generator](./assets/images/screenshot5.jpg)
 
 ## Description 
 
